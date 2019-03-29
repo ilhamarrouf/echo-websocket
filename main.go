@@ -119,6 +119,9 @@ func storePhoto(db *sql.DB) echo.HandlerFunc {
 	}
 }
 
+/**
+Helpers
+ */
 func initializeDatabase(filepath string) *sql.DB {
 	db, err := sql.Open("sqlite3", filepath)
 	if err != nil || db == nil {
@@ -128,9 +131,6 @@ func initializeDatabase(filepath string) *sql.DB {
 	return db
 }
 
-/**
-Helpers
- */
 func migrateDatabase(db *sql.DB)  {
 	sql := `
 		CREATE TABLE IF NOT EXISTS photos(
@@ -146,7 +146,7 @@ func migrateDatabase(db *sql.DB)  {
 }
 
 /**
-Main
+Main app
  */
 func main()  {
 	db := initializeDatabase("database/database.sqlite")
